@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:f_logs/f_logs.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 class LogsStorage {
   static final LogsStorage _singleton = LogsStorage._();
@@ -20,17 +21,25 @@ class LogsStorage {
     if (Platform.isIOS) {
       directory = await getApplicationDocumentsDirectory();
     } else {
-      directory = await getExternalStorageDirectory();
+      directory = await getAppPath();
     }
 
     return directory.path;
+  }
+
+  String getAppPath() {
+    if (Platform.isWindows) {
+      return Directory(path.dirname(Platform.resolvedExecutable)).path;
+    }
+    return Directory.current.path;
   }
 
   Future<File> get _localFile async {
     final path = "${await _localPath}/${Constants.DIRECTORY_NAME}";
 
     //creating directory
-    Directory(path).create()
+    Directory(path)
+        .create()
         // The created directory is returned as a Future.
         .then((Directory directory) {
       print(directory.path);
