@@ -1,6 +1,6 @@
 import 'package:f_logs/f_logs.dart';
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 import 'package:sembast/sembast.dart';
 
 void main() {
@@ -69,12 +69,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //runtime permission
-  final Permission _permissionGroup = Permission.storage;
+  // final Permission _permissionGroup = Permission.storage;
 
   @override
   void initState() {
     super.initState();
-    requestPermission(_permissionGroup);
+    // requestPermission(_permissionGroup);
   }
 
   @override
@@ -260,5 +260,5 @@ class _HomePageState extends State<HomePage> {
   }
 
   //permission methods:---------------------------------------------------------
-  Future<void> requestPermission(Permission permission) => permission.request();
+  // Future<void> requestPermission(Permission permission) => permission.request();
 }
