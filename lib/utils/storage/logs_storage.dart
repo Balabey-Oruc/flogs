@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:f_logs/f_logs.dart';
@@ -55,7 +56,8 @@ class LogsStorage {
     } else {
       print('file does not exist---------->_getLocalFile()');
     }
-
+    final parentPath = await file.parent.create(recursive: true);
+    log('parentPath => $parentPath');
     return file;
   }
 
