@@ -28,11 +28,11 @@ class LogsStorage {
     return directory.path;
   }
 
-  Future<Directory> getAppPath() async {
+  Directory getAppPath() {
     if (Platform.isWindows) {
       return Directory(path.dirname(Platform.resolvedExecutable));
     }
-    return await getApplicationDocumentsDirectory();
+    return Directory.current;
   }
 
   Future<File> get _localFile async {
